@@ -4,9 +4,6 @@ const (
 	RequestURL = "https://bitpay.ir/payment/gateway-send"
 	VerifyURL  = "https://bitpay.ir/payment/gateway-result-second"
 	PayURL     = "https://bitpay.ir/payment/"
-	APIKey     = "your token"
-
-	CallbackURL = "your callback URL"
 )
 
 type BitPayIR struct {
@@ -20,4 +17,13 @@ type BitPayRequest struct {
 	Name        string
 	Email       string
 	Description string
+}
+
+func NewService(token, callbackURL string) *BitPayIR {
+
+	return &BitPayIR{
+		API: token,
+		Redirect: callbackURL,
+	}
+
 }
