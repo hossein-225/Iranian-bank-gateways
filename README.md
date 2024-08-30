@@ -5,6 +5,7 @@ Free and open source code in Go (Golang) language is made to communicate with th
 You can now pay with the following gateways:
 
 * Mellat Bank
+* bitpay
 
 ## Thank you for helping us improve this project forward
 
