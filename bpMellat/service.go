@@ -7,19 +7,15 @@ const (
 )
 
 type BpMellat struct {
-	TerminalId      int    `xml:"terminalId"`
-	UserName        string `xml:"userName"`
-	UserPassword    string `xml:"userPassword"`
-	OrderId         int64  `xml:"orderId"`
-	SaleOrderId     int64  `xml:"saleOrderId"`
-	SaleReferenceId int64  `xml:"saleReferenceId"`
-}
-
-type BpPayRequest struct {
 	TerminalId   int    `xml:"terminalId"`
 	UserName     string `xml:"userName"`
 	UserPassword string `xml:"userPassword"`
-	OrderId      int64  `xml:"orderId"`
+}
+
+type BpPayRequest struct {
+	OrderId         int64 `xml:"orderId"`
+	SaleOrderId     int64 `xml:"saleOrderId"`
+	SaleReferenceId int64 `xml:"saleReferenceId"`
 
 	Amount         int64  `xml:"amount"`
 	LocalDate      string `xml:"localDate"`
@@ -37,19 +33,12 @@ type CallbackResponse struct {
 	CardHolderInfo  string `json:"CardHolderInfo"`
 }
 
-func NewService(orderId, saleOrderId, saleReferenceId int64) *BpMellat {
-
-	// complete it and it's better to read it from env/config file
-	terminalId := 0
-	userName := ""
-	userPassword := ""
+func NewService(terminalId int, userName, userPassword string) *BpMellat {
 
 	return &BpMellat{
-		TerminalId:      terminalId,
-		UserName:        userName,
-		UserPassword:    userPassword,
-		OrderId:         orderId,
-		SaleOrderId:     saleOrderId,
-		SaleReferenceId: saleReferenceId,
+		TerminalId:   terminalId,
+		UserName:     userName,
+		UserPassword: userPassword,
 	}
+	
 }
