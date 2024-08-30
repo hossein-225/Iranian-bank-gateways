@@ -1,9 +1,8 @@
 package bpMellat
 
 const (
-	url         = "https://bpm.shaparak.ir/pgwchannel/services/pgw?wsdl"
-	GatewayURL  = "https://bpm.shaparak.ir/pgwchannel/startpay.mellat"
-	CallBackUrl = "your callback URL"
+	url        = "https://bpm.shaparak.ir/pgwchannel/services/pgw?wsdl"
+	GatewayURL = "https://bpm.shaparak.ir/pgwchannel/startpay.mellat"
 )
 
 type BpMellat struct {
@@ -40,5 +39,5 @@ func NewService(terminalId int, userName, userPassword string) *BpMellat {
 		UserName:     userName,
 		UserPassword: userPassword,
 	}
-	
+
 }
