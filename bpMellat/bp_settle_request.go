@@ -23,7 +23,7 @@ type BpSettleRequestResponse struct {
 	Return string `xml:"return"`
 }
 
-func (req *BpMellat) BpSettleRequest() error {
+func (req *BpMellat) BpSettleRequest(input BpPayRequest) error {
 	soapEnvelope := `<?xml version="1.0" encoding="UTF-8"?>
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://interfaces.core.sw.bps.com/">
    <soapenv:Header/>
@@ -32,9 +32,9 @@ func (req *BpMellat) BpSettleRequest() error {
          <terminalId>` + strconv.Itoa(req.TerminalId) + `</terminalId>
          <userName>` + req.UserName + `</userName>
          <userPassword>` + req.UserPassword + `</userPassword>
-         <orderId>` + strconv.FormatInt(req.OrderId, 10) + `</orderId>
-         <saleOrderId>` + strconv.FormatInt(req.SaleOrderId, 10) + `</saleOrderId>
-         <saleReferenceId>` + strconv.FormatInt(req.SaleReferenceId, 10) + `</saleReferenceId>
+         <orderId>` + strconv.FormatInt(input.OrderId, 10) + `</orderId>
+         <saleOrderId>` + strconv.FormatInt(input.SaleOrderId, 10) + `</saleOrderId>
+         <saleReferenceId>` + strconv.FormatInt(input.SaleReferenceId, 10) + `</saleReferenceId>
       </web:bpSettleRequest>
    </soapenv:Body>
 </soapenv:Envelope>`

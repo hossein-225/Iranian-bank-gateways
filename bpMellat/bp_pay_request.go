@@ -23,7 +23,7 @@ type BpPayRequestResponse struct {
 	Return string `xml:"return"`
 }
 
-func (req *BpMellat) BpPayRequest(amount, payerId int64, localDate, localTime, additionalData, callBackUrl string) (string, string, error) {
+func (req *BpMellat) BpPayRequest(input BpPayRequest) (string, string, error) {
 	soapEnvelope := `<?xml version="1.0" encoding="UTF-8"?>
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://interfaces.core.sw.bps.com/">
    <soapenv:Header/>
@@ -32,13 +32,13 @@ func (req *BpMellat) BpPayRequest(amount, payerId int64, localDate, localTime, a
          <terminalId>` + strconv.Itoa(req.TerminalId) + `</terminalId>
          <userName>` + req.UserName + `</userName>
          <userPassword>` + req.UserPassword + `</userPassword>
-         <orderId>` + strconv.FormatInt(req.OrderId, 10) + `</orderId>
-         <amount>` + strconv.FormatInt(amount, 10) + `</amount>
-         <localDate>` + localDate + `</localDate>
-         <localTime>` + localTime + `</localTime>
-         <additionalData>` + additionalData + `</additionalData>
-         <callBackUrl>` + callBackUrl + `</callBackUrl>
-         <payerId>` + strconv.FormatInt(payerId, 10) + `</payerId>
+         <orderId>` + strconv.FormatInt(input.OrderId, 10) + `</orderId>
+         <amount>` + strconv.FormatInt(input.Amount, 10) + `</amount>
+         <localDate>` + input.LocalDate + `</localDate>
+         <localTime>` + input.LocalTime + `</localTime>
+         <additionalData>` + input.AdditionalData + `</additionalData>
+         <callBackUrl>` + input.CallBackUrl + `</callBackUrl>
+         <payerId>` + strconv.FormatInt(input.PayerId, 10) + `</payerId>
       </web:bpPayRequest>
    </soapenv:Body>
 </soapenv:Envelope>`
