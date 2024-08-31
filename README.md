@@ -19,6 +19,7 @@ When developing Go-based projects that require connections to Iranian payment ga
 - **Supported Gateways**:
   - **Mellat Bank**
   - **Bitpay**
+  - **Zarinpal**
 
 ## Installation
 
