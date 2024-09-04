@@ -1,4 +1,4 @@
-package samanpay
+package saman
 
 import "fmt"
 

@@ -1,15 +1,11 @@
-package samanpay
+package saman
 
 const (
-	RequestURL  = "https://sep.shaparak.ir/OnlinePG/OnlinePG"
-	VerifyURL   = "https://sep.shaparak.ir/verifyTxnRandomSessionkey/ipg/VerifyTransaction"
-	PayURL      = "https://sep.shaparak.ir/OnlinePG/SendToken"
-	ReverseURL  = "https://sep.shaparak.ir/verifyTxnRandomSessionkey/ipg/ReverseTransaction"
-	TerminalID  = ""
-	CallbackURL = "http://your_site.com/callback"
+	RequestURL = "https://sep.shaparak.ir/OnlinePG/OnlinePG"
+	VerifyURL  = "https://sep.shaparak.ir/verifyTxnRandomSessionkey/ipg/VerifyTransaction"
+	PayURL     = "https://sep.shaparak.ir/OnlinePG/SendToken"
+	ReverseURL = "https://sep.shaparak.ir/verifyTxnRandomSessionkey/ipg/ReverseTransaction"
 )
-
-// Structs for managing requests and responses across the program
 
 type PaymentRequest struct {
 	Action           string `json:"action"`
@@ -59,28 +55,27 @@ type VerifyResponse struct {
 	Success           bool   `json:"Success"`
 }
 
-// PaymentService for managing payment related operations
 type PaymentService struct {
 	TerminalId string
 	Username   string
 	Password   string
 }
 
-func NewPaymentService(username, password string) *PaymentService {
+func NewPaymentService(TerminalId, username, password string) *PaymentService {
 	return &PaymentService{
-		TerminalId: TerminalID,
+		TerminalId: TerminalId,
 		Username:   username,
 		Password:   password,
 	}
 }
 
-func (s *PaymentService) CreateRequest(amount int, resNum, cellNumber string) *PaymentRequest {
+func (s *PaymentService) CreateRequest(amount int, resNum, cellNumber, redirectUrl string) *PaymentRequest {
 	return &PaymentRequest{
 		Action:      "token",
 		TerminalId:  s.TerminalId,
 		Amount:      amount,
 		ResNum:      resNum,
-		RedirectUrl: CallbackURL,
+		RedirectUrl: redirectUrl,
 		CellNumber:  cellNumber,
 	}
 }

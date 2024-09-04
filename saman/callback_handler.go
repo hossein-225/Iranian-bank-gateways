@@ -1,4 +1,4 @@
-package samanpay
+package saman
 
 import (
 	"net/http"
