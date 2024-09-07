@@ -22,7 +22,7 @@ type BitPayRequest struct {
 func NewService(token, callbackURL string) *BitPayIR {
 
 	return &BitPayIR{
-		API: token,
+		API:      token,
 		Redirect: callbackURL,
 	}
 
