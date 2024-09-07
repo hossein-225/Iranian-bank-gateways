@@ -68,14 +68,3 @@ func NewPaymentService(TerminalId, username, password string) *PaymentService {
 		Password:   password,
 	}
 }
-
-func (s *PaymentService) CreateRequest(amount int, resNum, cellNumber, redirectUrl string) *PaymentRequest {
-	return &PaymentRequest{
-		Action:      "token",
-		TerminalId:  s.TerminalId,
-		Amount:      amount,
-		ResNum:      resNum,
-		RedirectUrl: redirectUrl,
-		CellNumber:  cellNumber,
-	}
-}

@@ -9,11 +9,11 @@ import (
 	"strconv"
 )
 
-func (s *PaymentService) Reverse(refNum string) (map[string]interface{}, error) {
+func (s *PaymentService) Reverse(refNum string) (*VerifyResponse, error) {
 
 	data := neturl.Values{}
-	data.Set("terminalId", s.TerminalId)
-	data.Set("refNum", refNum)
+	data.Set("TerminalNumber", s.TerminalId)
+	data.Set("RefNum", refNum)
 
 	resp, err := http.PostForm(ReverseURL, data)
 	if err != nil {
@@ -30,15 +30,14 @@ func (s *PaymentService) Reverse(refNum string) (map[string]interface{}, error) 
 		return nil, fmt.Errorf("خطا در برگشت: %s", GetVerifyAndReverseErrorMessage(code))
 	}
 
-	var result map[string]interface{}
+	var result VerifyResponse
 	if err := json.Unmarshal(body, &result); err != nil {
 		return nil, err
 	}
 
-	// Reverse check result
-	if resultCode, ok := result["ResultCode"].(float64); ok && resultCode != 0 {
-		return nil, fmt.Errorf("خطا در برگشت: %s", GetVerifyAndReverseErrorMessage(int(resultCode)))
+	if result.ResultCode != 0 {
+		return nil, fmt.Errorf("خطا در تایید: %s", GetVerifyAndReverseErrorMessage(result.ResultCode))
 	}
 
-	return result, nil
+	return &result, nil
 }
