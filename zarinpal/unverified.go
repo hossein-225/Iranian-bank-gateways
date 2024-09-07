@@ -33,7 +33,7 @@ func (z *ZarinPalService) Unverified() (*UnverifiedResponseData, error) {
 	if unverifiedResp.Errors.Code != 0 {
 		return nil, GetErrorMessage(unverifiedResp.Errors.Code, unverifiedResp.Errors.Validations)
 	} else if unverifiedResp.Data.Authorities == nil {
-		return nil, errors.New("error occured")
+		return nil, errors.New("error occurred")
 	}
 
 	return &unverifiedResp.Data, nil
