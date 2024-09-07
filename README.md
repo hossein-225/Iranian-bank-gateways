@@ -1,9 +1,11 @@
 # Iranian Bank Gateways
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/hossein-225/Iranian-bank-gateways/blob/main/LICENSE) 
-[![Go Report Card](https://goreportcard.com/badge/github.com/hossein-225/iranian-bank-gateways)](https://goreportcard.com/report/github.com/hossein-225/iranian-bank-gateways) 
 [![Go Reference](https://pkg.go.dev/badge/github.com/hossein-225/iranian-bank-gateways.svg)](https://pkg.go.dev/github.com/hossein-225/iranian-bank-gateways) 
+[![GitHub release](https://img.shields.io/github/v/release/hossein-225/iranian-bank-gateways.svg)](https://github.com/hossein-225/iranian-bank-gateways/releases)
+[![Go Report Card](https://goreportcard.com/badge/github.com/hossein-225/iranian-bank-gateways)](https://goreportcard.com/report/github.com/hossein-225/iranian-bank-gateways) 
+[![Languages](https://img.shields.io/github/languages/top/hossein-225/iranian-bank-gateways)](https://github.com/hossein-225/iranian-bank-gateways)
 [![GitHub contributors](https://img.shields.io/github/contributors/hossein-225/iranian-bank-gateways)](https://github.com/hossein-225/Iranian-bank-gateways/graphs/contributors)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/hossein-225/Iranian-bank-gateways/blob/main/LICENSE)
 
 
 A free and open-source library written in Go (Golang) designed to streamline the integration process with Iranian bank payment gateways.
