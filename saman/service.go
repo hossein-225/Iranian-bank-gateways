@@ -57,14 +57,10 @@ type VerifyResponse struct {
 
 type PaymentService struct {
 	TerminalId string
-	Username   string
-	Password   string
 }
 
-func NewPaymentService(TerminalId, username, password string) *PaymentService {
+func NewPaymentService(TerminalId string) *PaymentService {
 	return &PaymentService{
 		TerminalId: TerminalId,
-		Username:   username,
-		Password:   password,
 	}
 }
