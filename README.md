@@ -20,6 +20,7 @@ When developing Go-based projects that require connections to Iranian payment ga
   - **Mellat Bank**
   - **Bitpay**
   - **Zarinpal**
+  - **Saman Bank**
 
 ## Installation
 
@@ -58,6 +59,8 @@ Configuration depends on the gateway you're integrating with:
 
 - **Mellat Bank**: Requires a username and password, which are provided by the bank.
 - **Bitpay**: Requires an API key, obtainable from your Bitpay account.
+- **Zarinpal**: Requires an API key, obtainable from your Zarinpal account.
+- **Saman Bank**: Requires an terminal id, obtainable from your Saman account.
 
 Ensure you have the necessary credentials before attempting integration.
 
@@ -75,6 +78,7 @@ For support, please contact [@hossein-225](https://github.com/hossein-225).
 
 ## Contributors
 
+- [@mostafaparaste](https://github.com/mostafaparaste)
 - [@mhap75](https://github.com/mhap75)
 
 ## Changelog
