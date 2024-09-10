@@ -1,0 +1,22 @@
+bitpay:
+  requestURL: "https://bitpay.ir/payment/gateway-send"
+  verifyURL: "https://bitpay.ir/payment/gateway-result-second"
+  payURL: "https://bitpay.ir/payment/"
+
+mellat:
+  url: "https://sandbox.banktest.ir/mellat/bpm.shaparak.ir/pgwchannel/services/pgw?wsdl"
+  gatewayURL: "https://sandbox.banktest.ir/mellat/bpm.shaparak.ir/pgwchannel/startpay.mellat"
+
+saman:
+  requestURL: "https://sep.shaparak.ir/OnlinePG/OnlinePG"
+  verifyURL: "https://sep.shaparak.ir/verifyTxnRandomSessionkey/ipg/VerifyTransaction"
+  payURL: "https://sep.shaparak.ir/OnlinePG/SendToken"
+  reverseURL: "https://sep.shaparak.ir/verifyTxnRandomSessionkey/ipg/ReverseTransaction"
+
+
+zarinpal:
+  paymentURL: "https://api.zarinpal.com/pg/v4/payment/request.json"
+  verifyURL: "https://api.zarinpal.com/pg/v4/payment/verify.json"
+  inquiryURL: "https://api.zarinpal.com/pg/v4/payment/inquiry.json"
+  unverifiedURL: "https://api.zarinpal.com/pg/v4/payment/unVerified.json"
+  payURL: "https://www.zarinpal.com/pg/StartPay/"
