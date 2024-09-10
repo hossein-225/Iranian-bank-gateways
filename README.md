@@ -48,3 +48,11 @@ This project is licensed under the MIT License. See the [LICENSE](./LICENSE) fil
 
 - For a list of authors, see [AUTHORS.md](./AUTHORS.md).
 - See our [CHANGELOG.md](./CHANGELOG.md) for the latest updates and changes.
+
+## Contact
+
+If you have any questions or need further assistance, feel free to reach out:
+
+- Email: [hossein_225@yahoo.com](mailto:hossein_225@yahoo.com)
+- Telegram: [@hossein_225](https://t.me/hossein_225)
+- LinkedIn: [Seyed Hossein Hosseini Motlagh](https://www.linkedin.com/in/seyed-hossein-hosseini-motlagh)
