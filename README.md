@@ -1,3 +1,4 @@
+
 # Iranian Bank Gateways
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/hossein-225/iranian-bank-gateways.svg)](https://pkg.go.dev/github.com/hossein-225/iranian-bank-gateways) 
@@ -7,82 +8,43 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/hossein-225/iranian-bank-gateways)](https://github.com/hossein-225/Iranian-bank-gateways/graphs/contributors)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/hossein-225/Iranian-bank-gateways/blob/main/LICENSE)
 
-
 A free and open-source library written in Go (Golang) designed to streamline the integration process with Iranian bank payment gateways.
 
 ## Introduction
 
-When developing Go-based projects that require connections to Iranian payment gateways, developers traditionally had to write custom code for each integration. This repository eliminates that need by providing reusable code for common payment gateway interactions.
+This library simplifies the process of integrating with Iranian bank payment gateways by providing reusable code for common interactions, including token requests and payment verification.
 
 ## Features
 
-- **Request and Retrieve Token**: Simplify the process of obtaining tokens for transactions.
-- **Payment Verification**: Easily verify payments across supported gateways.
+- **Request and Retrieve Token**
+- **Payment Verification**
 - **Supported Gateways**:
-  - **Mellat Bank**
-  - **Bitpay**
-  - **Zarinpal**
-  - **Saman Bank**
+  - [Mellat Bank Documentation](./gateways/bpMellat/README_Mellat.md)
+  - [Bitpay Documentation](./gateways/bitpay/README_BitPay.md)
+  - [Zarinpal Documentation](./gateways/zarinpal/README_Zarinpal.md)
+  - [Saman Bank Documentation](./gateways/saman/README_Saman.md)
 
-## Installation
+## Get Started
 
-To install the library, you can use either of the following commands:
+To get started with the library, simply install it using the following command:
 
 ```sh
 go get github.com/hossein-225/iranian-bank-gateways
 ```
 
-or
+For detailed usage examples, refer to the individual gateway documentation pages linked above.
 
-```sh
-go install github.com/hossein-225/iranian-bank-gateways
-```
+## Contribution
 
-## Usage
+We welcome contributions to improve this project! Whether it’s adding test coverage, fixing bugs, or adding support for additional gateways, your help is appreciated.
 
-To use the library, create a new instance of the gateway service and utilize the available functions as per the documentation. Here’s a quick example:
-
-```go
-import (
-    "github.com/hossein-225/iranian-bank-gateways/bpMellat"
-)
-
-func main() {
-    gateway := bpMellat.NewService("your-terminal-id", "your-username", "your-password")
-
-    // Add your logic to handle payment request
-}
-
-```
-
-## Configuration
-
-Configuration depends on the gateway you're integrating with:
-
-- **Mellat Bank**: Requires a username and password, which are provided by the bank.
-- **Bitpay**: Requires an API key, obtainable from your Bitpay account.
-- **Zarinpal**: Requires an API key, obtainable from your Zarinpal account.
-- **Saman Bank**: Requires an terminal id, obtainable from your Saman account.
-
-Ensure you have the necessary credentials before attempting integration.
-
-## Testing
-
-Testing support is not provided yet. Contributions are welcome to add test coverage.
+See our [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
 
-## Support
+## Further Information
 
-For support, please contact [@hossein-225](https://github.com/hossein-225).
-
-## Contributors
-
-- [@mostafaparaste](https://github.com/mostafaparaste)
-- [@mhap75](https://github.com/mhap75)
-
-## Changelog
-
-A changelog has not been provided yet. Major updates will be documented in future releases.
+- For a list of authors, see [AUTHORS.md](./AUTHORS.md).
+- See our [CHANGELOG.md](./CHANGELOG.md) for the latest updates and changes.

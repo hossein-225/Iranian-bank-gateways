@@ -1,0 +1,356 @@
+run:
+  timeout: 5m
+  modules-download-mode: readonly
+  allow-serial-runners: true
+
+output:
+  sort-results: true
+  uniq-by-line: false
+
+linters-settings:
+  depguard:
+    rules:
+      all:
+        list-mode: lax
+        deny:
+          - pkg: "flag"
+            desc: '`flag` package is only allowed in main.go'
+          - pkg: "log"
+            desc: 'logging is provided by `pkg/log`'
+          - pkg: "io/ioutil"
+            desc: '`io/ioutil` package is deprecated, use the `io` and `os` package instead'
+          - pkg: "reflect"
+            desc: '`reflect` package is dangerous to use'
+          - pkg: "unsafe"
+            desc: '`unsafe` package is dangerous to use'
+
+  errcheck:
+    check-type-assertions: true
+    check-blank: true
+    disable-default-exclusions: true
+    exclude-functions:
+      - '(*bytes.Buffer).Write'
+      - '(*github.com/valyala/bytebufferpool.ByteBuffer).Write'
+      - '(*github.com/valyala/bytebufferpool.ByteBuffer).WriteByte'
+      - '(*github.com/valyala/bytebufferpool.ByteBuffer).WriteString'
+
+  errchkjson:
+    report-no-exported: true
+
+  exhaustive:
+    check-generated: true
+    default-signifies-exhaustive: true
+
+  forbidigo:
+    forbid:
+      - ^print(ln)?$
+      - ^fmt\.Print(f|ln)?$
+      - ^http\.Default(Client|ServeMux|Transport)$
+      - ^panic$
+      - ^time\.Sleep$
+    analyze-types: true
+
+  gci:
+    sections:
+      - standard
+      - prefix(github.com/gofiber/fiber)
+      - default
+      - blank
+      - dot
+      - alias
+    custom-order: true
+
+  goconst:
+    numbers: true
+
+  gocritic:
+    enabled-tags:
+      - diagnostic
+      - style
+      - performance
+      - experimental
+      - opinionated
+    settings:
+      captLocal:
+        paramsOnly: false
+      elseif:
+        skipBalanced: false
+      underef:
+        skipRecvDeref: false
+      unnamedResult:
+        checkExported: false
+
+  gofumpt:
+    module-path: github.com/gofiber/fiber
+    extra-rules: true
+
+  gosec:
+    excludes:
+      - G104
+    config:
+      global:
+        show-ignored: true
+        audit: true
+
+  govet:
+    enable-all: true
+    disable:
+      - shadow
+
+  grouper:
+    const-require-grouping: true
+    import-require-single-import: true
+    import-require-grouping: true
+
+  loggercheck:
+    require-string-key: true
+    no-printf-like: true
+
+  misspell:
+    locale: US
+
+  nolintlint:
+    require-explanation: true
+    require-specific: true
+
+  nonamedreturns:
+    report-error-in-defer: true
+
+  perfsprint:
+    err-error: true
+
+  predeclared:
+    q: true
+
+  promlinter:
+    strict: true
+
+  reassign:
+    patterns:
+      - '.*'
+
+  revive:
+    enable-all-rules: true
+    rules:
+      - name: add-constant
+        disabled: true
+      - name: argument-limit
+        disabled: true
+      - name: banned-characters
+        disabled: true
+      - name: cognitive-complexity
+        disabled: true
+      - name: comment-spacings
+        arguments:
+          - nolint
+        disabled: true
+      - name: cyclomatic
+        disabled: true
+      - name: enforce-repeated-arg-type-style
+        arguments:
+          - short
+      - name: enforce-slice-style
+        arguments:
+          - make
+        disabled: true
+      - name: exported
+        disabled: true
+      - name: file-header
+        disabled: true
+      - name: function-result-limit
+        arguments: [3]
+      - name: function-length
+        disabled: true
+      - name: line-length-limit
+        disabled: true
+      - name: max-public-structs
+        disabled: true
+      - name: modifies-parameter
+        disabled: true
+      - name: nested-structs
+        disabled: true
+      - name: package-comments
+        disabled: true
+      - name: optimize-operands-order
+        disabled: true
+      - name: unchecked-type-assertion
+        disabled: true
+      - name: unhandled-error
+        arguments: ['bytes\.Buffer\.Write']
+
+  stylecheck:
+    checks:
+      - all
+      - -ST1000
+      - -ST1020
+      - -ST1021
+      - -ST1022
+
+  tagalign:
+    strict: true
+
+  tagliatelle:
+    case:
+      rules:
+        json: snake
+
+  tenv:
+    all: true
+
+  testifylint:
+    enable-all: true
+
+  testpackage:
+    skip-regexp: "^$"
+
+  unparam:
+    check-exported: false
+
+  unused:
+    parameters-are-used: false
+    local-variables-are-used: false
+    field-writes-are-uses: true
+    exported-fields-are-used: true
+
+  usestdlibvars:
+    http-method: true
+    http-status-code: true
+    time-weekday: true
+    time-month: true
+    time-layout: true
+    crypto-hash: true
+    default-rpc-path: true
+    sql-isolation-level: true
+    tls-signature-scheme: true
+    constant-kind: true
+
+  wrapcheck:
+    ignorePackageGlobs:
+      - github.com/gofiber/fiber/*
+      - github.com/valyala/fasthttp
+
+issues:
+  exclude-use-default: false
+  exclude-case-sensitive: true
+  max-issues-per-linter: 0
+  max-same-issues: 0
+  exclude-dirs:
+    - internal
+  exclude-rules:
+    - linters:
+        - err113
+      text: 'do not define dynamic errors, use wrapped static errors instead*'
+    - path: log/.*\.go
+      linters:
+        - depguard
+    - path: _test\.go
+      linters:
+        - bodyclose
+        - err113
+  fix: true
+
+linters:
+  enable:
+    - asasalint
+    - asciicheck
+    - bidichk
+    - bodyclose
+    - containedctx
+    - contextcheck
+    # - cyclop //TODO: Enable
+    - decorder
+    - depguard
+    - dogsled
+    # - dupl //TODO: Enable
+    - dupword
+    - durationcheck
+    - errcheck
+    - errchkjson
+    - errname
+    - errorlint
+    - exhaustive
+    # - exhaustruct //TODO: Enable
+    - copyloopvar
+    - forbidigo
+    - forcetypeassert
+    # - funlen //TODO: Enable
+    - gci
+    - ginkgolinter
+    - gocheckcompilerdirectives
+    # - gochecknoglobals # TODO: Enable
+    - gochecknoinits
+    - gochecksumtype
+    # - gocognit # TODO: Enable
+    - goconst
+    - gocritic
+    - gocyclo
+    - godot
+    - godox
+    - err113
+    - gofmt
+    - gofumpt
+    - goheader
+    - goimports
+    # - mnd # TODO: Enable
+    - gomoddirectives
+    - gomodguard
+    - goprintffuncname
+    - gosec
+    - gosimple
+    - gosmopolitan
+    - govet
+    - grouper
+    - importas
+    - inamedparam
+    - ineffassign
+    - interfacebloat
+    - ireturn
+    # - lll # TODO: Enable
+    - loggercheck
+    - maintidx
+    - makezero
+    - mirror
+    - misspell
+    - musttag
+    - nakedret
+    # - nestif # TODO: Enable
+    - nilerr
+    - nilnil
+    - nlreturn
+    - noctx
+    - nolintlint
+    - nonamedreturns
+    - nosprintfhostport
+    - paralleltest
+    - perfsprint
+    - prealloc
+    - predeclared
+    - promlinter
+    - protogetter
+    - reassign
+    - revive
+    - rowserrcheck
+    - sloglint
+    - spancheck
+    - sqlclosecheck
+    - staticcheck
+    - stylecheck
+    - tagalign
+    - tagliatelle
+    - tenv
+    - testableexamples
+    - testifylint
+    - testpackage
+    - thelper
+    - tparallel
+    - typecheck
+    - unconvert
+    - unparam
+    - unused
+    - usestdlibvars
+    - varnamelen
+    - wastedassign
+    - whitespace
+    - wrapcheck
+    # - wsl # TODO: Enable
+    - zerologlint
