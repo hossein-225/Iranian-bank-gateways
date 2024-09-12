@@ -1,4 +1,3 @@
-
 # BitPay Gateway Integration
 
 This Go package provides a simple way to integrate the BitPay payment gateway into your Golang application. It allows you to send payment requests and verify transactions using the BitPay API.
@@ -37,7 +36,7 @@ func main() {
 To send a payment request, use the `Request` method. The method requires a `BitPayRequest` struct that contains the payment details such as the amount, order ID, name, email, description, and callback URL.
 
 ```go
-request := bitpay.BitPayRequest{
+request := &bitpay.BitPayRequest{
     Amount:      1000, // Amount in Toman (e.g., 1000 Toman) - Necessary
     OrderID:     "order12345", // Optional
     Name:        "Hossein Hosseini", // Optional
@@ -66,8 +65,7 @@ if err != nil {
     log.Fatalf("Transaction verification failed: %v", err)
 }
 
-fmt.Printf("Verification result: %+v
-", result)
+fmt.Printf("Verification result: %v", result)
 ```
 
 The `Verify` method will return a map containing transaction details if successful.
@@ -94,7 +92,7 @@ func main() {
     }
 
     // Send a payment request
-    request := bitpay.BitPayRequest{
+    request := &bitpay.BitPayRequest{
         Amount:      1000, // Amount in Toman - Necessary
         OrderID:     "order12345", // Optional
         Name:        "Hossein Hosseini", // Optional
@@ -116,8 +114,7 @@ func main() {
         log.Fatalf("Transaction verification failed: %v", err)
     }
 
-    fmt.Printf("Verification result: %+v
-", result)
+    fmt.Printf("Verification result: %v", result)
 }
 ```
 

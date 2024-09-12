@@ -1,4 +1,3 @@
-
 # Mellat Payment Gateway Integration
 
 This Go package provides a simple way to integrate the Mellat payment gateway into your Golang application. It allows you to handle payment requests, verify transactions, and more using the Mellat Bank Payment Gateway API.
@@ -38,7 +37,7 @@ func main() {
 To send a payment request, use the `BpPayRequest` method. The method requires a `BpPayRequest` struct that contains the payment details such as the order ID, amount, and callback URL.
 
 ```go
-request := bpmellat.BpPayRequest{
+request := &bpmellat.BpPayRequest{
     OrderID:         12345,
     SaleOrderID:     54321,
     SaleReferenceID: 0, // Use 0 for a new transaction
@@ -138,7 +137,7 @@ func main() {
     }
 
     // Send a payment request
-    request := bpmellat.BpPayRequest{
+    request := &bpmellat.BpPayRequest{
         OrderID:         12345,
         SaleOrderID:     54321,
         SaleReferenceID: 0,

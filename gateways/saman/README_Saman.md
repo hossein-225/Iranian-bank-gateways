@@ -1,4 +1,3 @@
-
 # Saman Payment Gateway Integration
 
 This Go package provides a simple way to integrate the Saman payment gateway into your Golang application. It allows you to handle payment requests, verify transactions, and more using the Saman Bank Payment Gateway API.
@@ -57,8 +56,7 @@ if err != nil {
     log.Fatalf("Transaction verification failed: %v", err)
 }
 
-fmt.Printf("Verification result: %+v
-", verifyResponse)
+fmt.Printf("Verification result: %v", verifyResponse)
 ```
 
 ### 4. Reverse a Transaction
@@ -71,8 +69,7 @@ if err != nil {
     log.Fatalf("Transaction reversal failed: %v", err)
 }
 
-fmt.Printf("Reversal result: %+v
-", reverseResponse)
+fmt.Printf("Reversal result: %v", reverseResponse)
 ```
 
 ## Example
@@ -110,8 +107,7 @@ func main() {
         log.Fatalf("Transaction verification failed: %v", err)
     }
 
-    fmt.Printf("Verification result: %+v
-", verifyResponse)
+    fmt.Printf("Verification result: %v", verifyResponse)
 
     // Reverse the transaction if necessary
     reverseResponse, err := service.Reverse(context.Background(), "refNumValue")
@@ -119,8 +115,7 @@ func main() {
         log.Fatalf("Transaction reversal failed: %v", err)
     }
 
-    fmt.Printf("Reversal result: %+v
-", reverseResponse)
+    fmt.Printf("Reversal result: %v", reverseResponse)
 }
 ```
 

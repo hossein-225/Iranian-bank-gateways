@@ -26,7 +26,7 @@ type SamanConfig struct {
 }
 
 type ZarinpalConfig struct {
-	PaymentURL    string `mapstructure:"paymentURL"`
+	RequestURL    string `mapstructure:"requestURL"`
 	VerifyURL     string `mapstructure:"verifyURL"`
 	InquiryURL    string `mapstructure:"inquiryURL"`
 	UnverifiedURL string `mapstructure:"unverifiedURL"`

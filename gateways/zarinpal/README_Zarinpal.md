@@ -1,4 +1,3 @@
-
 # ZarinPal Payment Gateway Integration
 
 This Go package provides a simple way to integrate the ZarinPal payment gateway into your Golang application. It allows you to handle payment requests, verify transactions, and more using the ZarinPal API.
@@ -37,12 +36,13 @@ func main() {
 To send a payment request, use the `Request` method. The method requires a `PaymentRequestDto` struct that contains the payment details such as the amount, description, email, and mobile number.
 
 ```go
-request := zarinpal.PaymentRequestDto{
+request := &zarinpal.PaymentRequestDto{
     Amount:      100000, // Amount in Rials
     Description: "Purchase of product XYZ",
     Email:       "example@example.com", // Optional
     Mobile:      "09120000000", // Optional
     Currency:    "IRR", // Default currency - Optional
+    CallbackURL: "https://your-callback-url.com", // Optional
     OrderID:     "order12345", // Optional
 }
 
@@ -64,8 +64,7 @@ if err != nil {
     log.Fatalf("Transaction verification failed: %v", err)
 }
 
-fmt.Printf("Verification result: %+v
-", verifyResponse)
+fmt.Printf("Verification result: %v", verifyResponse)
 ```
 
 ### 4. Inquire About a Transaction
@@ -78,8 +77,7 @@ if err != nil {
     log.Fatalf("Transaction inquiry failed: %v", err)
 }
 
-fmt.Printf("Inquiry result: %+v
-", inquiryResponse)
+fmt.Printf("Inquiry result: %v", inquiryResponse)
 ```
 
 ### 5. Unverified Transactions
@@ -92,8 +90,7 @@ if err != nil {
     log.Fatalf("Failed to fetch unverified transactions: %v", err)
 }
 
-fmt.Printf("Unverified transactions: %+v
-", unverifiedResponse)
+fmt.Printf("Unverified transactions: %v", unverifiedResponse)
 ```
 
 ## Example
@@ -118,12 +115,13 @@ func main() {
     }
 
     // Send a payment request
-    request := zarinpal.PaymentRequestDto{
+    request := &zarinpal.PaymentRequestDto{
         Amount:      100000,
         Description: "Purchase of product XYZ",
         Email:       "example@example.com",
         Mobile:      "09120000000",
         Currency:    "IRR",
+        CallbackURL: "https://your-callback-url.com",
         OrderID:     "order12345",
     }
 
@@ -140,8 +138,7 @@ func main() {
         log.Fatalf("Transaction verification failed: %v", err)
     }
 
-    fmt.Printf("Verification result: %+v
-", verifyResponse)
+    fmt.Printf("Verification result: %v", verifyResponse)
 
     // Inquire about the transaction
     inquiryResponse, err := service.Inquiry(context.Background(), "authorityValue")
@@ -149,8 +146,7 @@ func main() {
         log.Fatalf("Transaction inquiry failed: %v", err)
     }
 
-    fmt.Printf("Inquiry result: %+v
-", inquiryResponse)
+    fmt.Printf("Inquiry result: %v", inquiryResponse)
 
     // Fetch unverified transactions
     unverifiedResponse, err := service.Unverified(context.Background())
@@ -158,8 +154,7 @@ func main() {
         log.Fatalf("Failed to fetch unverified transactions: %v", err)
     }
 
-    fmt.Printf("Unverified transactions: %+v
-", unverifiedResponse)
+    fmt.Printf("Unverified transactions: %v", unverifiedResponse)
 }
 ```
 

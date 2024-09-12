@@ -33,7 +33,7 @@ func (z *ZarinPalService) Request(ctx context.Context, request *PaymentRequestDt
 		return "", fmt.Errorf("failed to marshal payment request: %w", err)
 	}
 
-	req, err := http.NewRequestWithContext(ctx, http.MethodPost, config.AppConfig.Zarinpal.PaymentURL, bytes.NewBuffer(jsonData))
+	req, err := http.NewRequestWithContext(ctx, http.MethodPost, config.AppConfig.Zarinpal.RequestURL, bytes.NewBuffer(jsonData))
 	if err != nil {
 		return "", fmt.Errorf("failed to create HTTP request: %w", err)
 	}
