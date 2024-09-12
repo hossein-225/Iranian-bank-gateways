@@ -4,6 +4,7 @@ People and companies, who have contributed:
 
 ## IBG 1.x series authors
 
+- [@mostafaparaste](https://github.com/mostafaparaste)
 
 ## IBG 0.x series authors
 
