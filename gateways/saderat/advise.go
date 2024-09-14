@@ -9,11 +9,11 @@ import (
 	"strconv"
 	"strings"
 
-	neturl "net/url"
-
-	config "github.com/hossein-225/Iranian-bank-gateways/configs"
 	"github.com/hossein-225/Iranian-bank-gateways/internal/errors"
 	"go.uber.org/zap"
+
+	config "github.com/hossein-225/Iranian-bank-gateways/configs"
+	neturl "net/url"
 )
 
 func (ps *PaymentService) ConfirmTransaction(ctx context.Context, digitalReceipt string, amount int64) (*AdviceResponse, error) {

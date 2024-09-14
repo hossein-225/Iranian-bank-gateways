@@ -6,13 +6,14 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	neturl "net/url"
 	"strconv"
 	"strings"
 
-	config "github.com/hossein-225/Iranian-bank-gateways/configs"
 	"github.com/hossein-225/Iranian-bank-gateways/internal/errors"
 	"go.uber.org/zap"
+
+	config "github.com/hossein-225/Iranian-bank-gateways/configs"
+	neturl "net/url"
 )
 
 func (ps *PaymentService) RollbackTransaction(ctx context.Context, digitalReceipt string, amount int64) (*RollbackResponse, error) {
@@ -50,8 +51,9 @@ func (ps *PaymentService) RollbackTransaction(ctx context.Context, digitalReceip
 	if result.ReturnID != strconv.Itoa(int(amount)) {
 		newResult, err := strconv.Atoi(result.ReturnID)
 		if err != nil {
-			return nil, fmt.Errorf("خطای داخلی : %v", err)
+			return nil, fmt.Errorf("خطای داخلی : %w", err)
 		}
+
 		return nil, fmt.Errorf("خطا در تایید: %v", errors.HandleServiceErrors(newResult))
 	}
 

@@ -7,15 +7,15 @@ import (
 	"fmt"
 	"net/http"
 
-	config "github.com/hossein-225/Iranian-bank-gateways/configs"
 	"github.com/hossein-225/Iranian-bank-gateways/internal/errors"
 	"go.uber.org/zap"
+
+	config "github.com/hossein-225/Iranian-bank-gateways/configs"
 )
 
-func (s *PaymentService) SendRequest(ctx context.Context, amount int64, callbackURL, invoiceID, payload string) (string, error) {
-
+func (ps *PaymentService) SendRequest(ctx context.Context, amount int64, callbackURL, invoiceID, payload string) (string, error) {
 	paymentRequest := PaymentRequest{
-		TerminalID:  s.TerminalID,
+		TerminalID:  ps.TerminalID,
 		Amount:      amount,
 		CallbackURL: callbackURL,
 		InvoiceID:   invoiceID,
@@ -28,7 +28,6 @@ func (s *PaymentService) SendRequest(ctx context.Context, amount int64, callback
 	}
 
 	req, err := http.NewRequestWithContext(ctx, http.MethodPost, config.AppConfig.Saderat.RequestURL, bytes.NewBuffer(jsonData))
-
 	if err != nil {
 		return "", fmt.Errorf("خطا در ساخت درخواست HTTP: %w", err)
 	}
@@ -37,14 +36,13 @@ func (s *PaymentService) SendRequest(ctx context.Context, amount int64, callback
 	client := &http.Client{}
 
 	resp, err := client.Do(req)
-
 	if err != nil {
 		return "", fmt.Errorf("خطا در ارسال درخواست HTTP: %w", err)
 	}
 
 	defer func() {
 		if err := resp.Body.Close(); err != nil {
-			s.Logger.Error("Error closing response body:", zap.Error(err))
+			ps.Logger.Error("Error closing response body:", zap.Error(err))
 		}
 	}()
 
@@ -64,5 +62,4 @@ func (s *PaymentService) SendRequest(ctx context.Context, amount int64, callback
 	}
 
 	return accessToken, nil
-
 }
