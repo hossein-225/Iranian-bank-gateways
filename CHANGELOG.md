@@ -1,5 +1,9 @@
 # IBG ChangeLog
 
+## IBG 1.1.0 (Sep 14, 2024)
+
+- Added support for Saderat Bank.
+
 ## IBG 1.0.0 (Sep 11, 2024)
 
 - Completely restructured the project for better organization and scalability.
