@@ -33,11 +33,19 @@ type ZarinpalConfig struct {
 	PayURL        string `mapstructure:"payURL"`
 }
 
+type SaderatConfig struct {
+	RequestURL  string `mapstructure:"requestURL"`
+	PayURL      string `mapstructure:"payURL"`
+	AdviseURL   string `mapstructure:"adviseURL"`
+	RollBackURL string `mapstructure:"rollBackURL"`
+}
+
 type Config struct {
 	BitPay   BitPayConfig   `mapstructure:"bitpay"`
 	Mellat   MellatConfig   `mapstructure:"mellat"`
 	Saman    SamanConfig    `mapstructure:"saman"`
 	Zarinpal ZarinpalConfig `mapstructure:"zarinpal"`
+	Saderat  SaderatConfig  `mapstructure:"saderat"`
 }
 
 var AppConfig Config
