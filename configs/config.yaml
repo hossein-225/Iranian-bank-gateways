@@ -19,3 +19,9 @@ zarinpal:
   verifyURL: "https://api.zarinpal.com/pg/v4/payment/verify.json"
   inquiryURL: "https://api.zarinpal.com/pg/v4/payment/inquiry.json"
   unverifiedURL: "https://api.zarinpal.com/pg/v4/payment/unVerified.json"
+
+saderat:
+  TokenURL: "https://sepehr.shaparak.ir:8081/V1/PeymentApi/GetToken"
+  PaymentURL: "https://mabna.shaparak.ir:8080/Pay"
+  AdviceURL: "https://mabna.shaparak.ir:8082/ipg.svc?wsdl"
+  RollbackURL: "https://mabna.shaparak.ir:8082/ipg.svc?wsdl"

@@ -23,6 +23,8 @@ This library simplifies the process of integrating with Iranian bank payment gat
   - [Bitpay Documentation](./gateways/bitpay/README_BitPay.md)
   - [Zarinpal Documentation](./gateways/zarinpal/README_Zarinpal.md)
   - [Saman Bank Documentation](./gateways/saman/README_Saman.md)
+  - [Saderat Bank Documentation](./gateways/saderat/README_Saderat.md)
+
 
 ## Get Started
 
