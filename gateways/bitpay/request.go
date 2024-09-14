@@ -11,8 +11,9 @@ import (
 	"github.com/hossein-225/Iranian-bank-gateways/internal/errors"
 	"go.uber.org/zap"
 
-	config "github.com/hossein-225/Iranian-bank-gateways/configs"
 	neturl "net/url"
+
+	config "github.com/hossein-225/Iranian-bank-gateways/configs"
 )
 
 func (b *BitPayIR) Request(ctx context.Context, request *BitPayRequest) (string, error) {

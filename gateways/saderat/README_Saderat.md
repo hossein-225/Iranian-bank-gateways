@@ -18,7 +18,7 @@ go get github.com/hossein-225/Iranian-bank-gateways/gateways/saderat
 
 ### 1. Initialize the Saderat Payment Service
 
-You need to initialize the `PaymentService` service by passing your API key.
+You need to initialize the `PaymentService` service by passing your Terminal ID.
 
 ```go
 import "github.com/hossein-225/Iranian-bank-gateways/gateways/saderat"

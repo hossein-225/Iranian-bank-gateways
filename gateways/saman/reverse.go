@@ -12,8 +12,9 @@ import (
 	"github.com/hossein-225/Iranian-bank-gateways/internal/errors"
 	"go.uber.org/zap"
 
-	config "github.com/hossein-225/Iranian-bank-gateways/configs"
 	neturl "net/url"
+
+	config "github.com/hossein-225/Iranian-bank-gateways/configs"
 )
 
 func (ps *PaymentService) Reverse(ctx context.Context, refNum string) (*VerifyResponse, error) {
